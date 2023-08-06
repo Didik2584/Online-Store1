@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register User</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="bg-gray-200">
+<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-extrabold text-center text-teal-700">Register User</h1>
+    <div class="mx-auto max-w-lg">
+        <form method="post" action="/user/register" class="mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-2xl">
+            <h1 class="text-center text-xl font-bold text-slate-700 sm:text-xl">
+                Silahkan isi form berikut
+            </h1>
+
+            <div>
+                <label for="username" class="text-sm font-medium">Username</label>
+
+                <div class="relative mt-1">
+                    <input
+                            type="username"
+                            name="username"
+                            id="username"
+                            class="w-full rounded-lg border-gray-200 p-3 pr-12 text-lg shadow-sm"
+                            placeholder="Masukkan Username"
+                            required
+                    />
+
+                </div>
+            </div>
+
+            <div>
+                <label for="password" class="text-sm font-medium">Password</label>
+
+                <div class="relative mt-1">
+                    <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="w-full rounded-lg border-gray-200 p-3 pr-12 text-lg shadow-sm"
+                            placeholder="Masukkan password"
+                            required
+                    />
+
+                    <span class="absolute inset-y-0 right-4 inline-flex items-center">
+            <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 text-gray-400 hover:text-black transition duration-150 ease-in-out cursor-pointer"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    onclick="showPassword()"
+                    stroke="currentColor">
+              <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </span>
+                </div>
+            </div>
+
+            <button
+                    type="submit"
+                    class="block w-full rounded-lg bg-teal-600 px-5 py-3 text-sm font-medium text-white"
+            >
+                Daftar
+            </button>
+
+            <p class="text-center text-sm text-gray-500">
+                Sudah punya akun?
+                <a class="underline text-green-800" href="/page/login">Masuk</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    function showPassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
+</body>
+
+</html>

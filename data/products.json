@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "name":"Kemeja Harmoni Ombre",
+        "price":"200000"
+    },
+    {
+        "id": "2",
+        "name":"Celana Pendek Pantai Breeze",
+        "price":"100000"
+    },
+    {
+        "id": "3",
+        "name":"Jaket Parka Hujan Malam",
+        "price":"250000"
+    },
+    {
+        "id": "4",
+        "name":"Mantel Berona Mewah",
+        "price":"150000"
+    },
+    {
+        "id": "5",
+        "name":"Jaket Kulit Keberanian",
+        "price":"300000"
+    },
+    {
+        "id": "6",
+        "name":"Jeans Denim Dihiasi",
+        "price":"400000"
+    }
+]

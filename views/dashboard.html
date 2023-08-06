@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard Page</title>
+    <script>
+        function displayQty(listData, checkId, qtyId) {
+            var checkBox = document.getElementById(checkId);
+            var qty = document.getElementById(qtyId);
+            if (checkBox.checked == true) {
+                qty.style.display = "block";
+                checkBox.value = listData + "," + qty.value
+            } else {
+                qty.style.display = "none";
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="/static/style.css">
+    </style>
+</head>
+
+<body class="font-sans bg-gray-200">
+<main class="m-16 max-w-full flex flex-row gap-2">
+    <nav class="w-1/5 bg-gray-100 shadow-lg rounded-lg p-3 flex flex-col justify-between">
+        <div>
+            <div class="flex flex-col items-center p-3">
+                <div class="m-3">
+                    <h1 class="text-xl font-bold text-center text-gray-700">Hello {{.Cart.Name}}</h1>
+                </div>
+
+                <div class="m-3">
+                    <form class="flex items-center space-x-6 flex-col justify-center" method="post" action="/user/img/update-profile"
+                          enctype="multipart/form-data">
+                        <div class="shrink-0 m-3">
+                            <img class="h-16 w-16 object-cover rounded-full"
+                                 src="/user/img/profile"
+                                 alt="Current profile photo"/>
+                        </div>
+                        <label class="block">
+                            <span class="sr-only">Choose profile photo</span>
+                            <input type="file" class="block w-full text-sm text-slate-500
+                                  file:mr-4 file:py-3 file:px-4
+                                  file:rounded-full file:border-0
+                                  file:text-sm file:font-semibold
+                                  file:bg-violet-200 file:text-black
+                                  hover:file:bg-teal-400 file:transition-all file:duration-300 file:ease-in-out"
+                                   name="file-avatar" id="file-avatar"
+                                   accept="image/png, image/jpeg, image/jpg">
+                        </label>
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg w-full mt-3"
+                                type="submit">
+                            Update
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="m-3">
+                <a href="/user/logout"
+                   class="px-3 py-2 border border-1 text-red-500 border-red-500 rounded-lg font-semibold">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="w-4/5 bg-gray-100 shadow-lg rounded-lg p-6 flex flex-row justify-start gap-20">
+        <div>
+            <h1 class="text-xl font-bold text-center text-gray-700">List Product</h1>
+
+            <form method="post" action="/cart/add">
+                {{range $val := .Product}}
+                <div class="block">
+                    <div class="mt-2">
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" id="check-{{ .Id }}" name="product" class="w-6 h-6 text-green-600 border-0 rounded-md focus:ring-0"  onclick="displayQty('{{ .Id }},{{ .Name }},{{ .Price }}', 'check-{{ .Id }}', 'qty-{{ .Id }}')" />
+                            <span class="ml-2">
+                                <label>{{ .Id }}. {{ .Name }}: Rp. {{ .Price }},-</label>
+                            </span>
+                        </label>
+                        <input type="number" style="display:none" id="qty-{{ .Id }}" value="1" min="1" max="100" class="w-20 h-10 px-3 text-green-600 border-0 rounded-md focus:ring-0" onchange="displayQty('{{ .Id }},{{ .Name }},{{ .Price }}', 'check-{{ .Id }}', 'qty-{{ .Id }}')" />
+                        <br>
+                    </div>
+                </div>
+
+                {{else}}
+                    Empty Product
+                {{end}}
+<!--                cool button add to cart -->
+                <div class="m-3">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg w-full mt-3"
+                            type="submit">
+                        Add to Cart
+                    </button>
+                </div>
+            </form>
+        </div>
+
+
+        <div>
+
+            <h1 class="text-xl font-bold text-center text-gray-700">My Cart</h1>
+
+            <ul>
+                {{range $val := .Cart.Cart}}
+                <li>{{ .Name }}
+                    <ul>
+                        <li>Price: Rp. {{ .Price }},-</li>
+                        <li>Quantity: {{ .Quantity }}</li>
+                        <li>Total: {{ .Total }}</li>
+                    </ul>
+                </li>
+                {{else}}
+                Empty Cart
+                {{end}}
+            </ul>
+            <p>Total Price Rp. {{.Cart.TotalPrice}},-</p>
+        </div>
+
+    </section>
+</main>
+
+</body>
+
+</html>

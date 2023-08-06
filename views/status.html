@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Show Message</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="bg-gray-200">
+    <article class="rounded-xl p-6 sm:p-8 mt-16 flex flex-col justify-center items-center">
+        <div class="flex items-start border border-1 border-teal-500 p-8 rounded-2xl">
+            <div class="hidden sm:grid sm:h-20 sm:w-20 sm:shrink-0 sm:place-content-center sm:rounded-full sm:border-2 sm:border-teal-500 " aria-hidden="true">
+                <div class="flex items-center gap-1">
+                    <span class="h-8 w-0.5 rounded-full bg-teal-500"></span>
+                    <span class="h-6 w-0.5 rounded-full bg-teal-500"></span>
+                    <span class="h-4 w-0.5 rounded-full bg-teal-500"></span>
+                    <span class="h-6 w-0.5 rounded-full bg-teal-500"></span>
+                    <span class="h-8 w-0.5 rounded-full bg-teal-500"></span>
+                </div>
+            </div>
+
+            <div class="sm:ml-8">
+                <strong
+                        class="rounded border border-teal-500 bg-teal-500 px-3 py-1.5 text-lg font-medium text-white"
+                >
+                    {{.message}}
+                </strong>
+
+                <h2 class="mt-4 text-2xl font-medium sm:text-xl">
+                    <a href="" class="hover:underline"> <h1>Hello {{.name}} 🤞</h1> </a>
+                </h2>
+
+                <a href="/page/login" class="block mt-4 text-2xl font-medium text-teal-600 hover:underline">
+                    Go to Login Page
+                </a>
+            </div>
+        </div>
+    </article>
+
+</body>
+
+</html>
